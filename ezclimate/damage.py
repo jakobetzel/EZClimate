@@ -454,7 +454,8 @@ class DLWDamage(Damage):
 		damages = np.zeros(nodes)
 		for i in range(nodes):
 			node = self.tree.get_node(period, i)
-			damages[i] = self._damage_function_node(m, node)
+			damages[i] = np.maximum(self._damage_function_node(m, node), 0)
+			#damages[i] = self._damage_function_node(m, node)
 		return damages 
 
 
